@@ -1,12 +1,17 @@
 with source as (
 
-    select * from read_csv_auto('data/raw/global_ads_performance_dataset.csv')
+    select 
+        *,
+        row_number() over () as row_num
+    from read_csv_auto('data/raw/global_ads_performance_dataset.csv')
 
 ),
 
 renamed as (
 
     select
+        {{ dbt_utils.generate_surrogate_key(['date', 'platform', 'campaign_type', 'industry', 'country', 'row_num']) }} as campaign_record_id,
+
         date::date           as campaign_date,
         platform,
         campaign_type,

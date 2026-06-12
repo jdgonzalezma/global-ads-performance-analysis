@@ -4,6 +4,11 @@ models:
   - name: stg_ads_performance
     description: "Datos de performance publicitaria limpios y tipados, a nivel de fila por campaña/fecha/plataforma."
     columns:
+      - name: campaign_record_id
+        description: "Identificador único generado a partir de date, platform, campaign_type, industry y country usando dbt_utils.generate_surrogate_key."
+        tests:
+          - unique
+          - not_null
       - name: campaign_date
         description: "Fecha en la que se registró la actividad de la campaña."
         tests:
