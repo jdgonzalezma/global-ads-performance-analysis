@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw_ads
+    schema: main
+    tables:
+      - name: global_ads_performance
+        meta:
+          external_location: "data/raw/global_ads_performance_dataset.csv"
