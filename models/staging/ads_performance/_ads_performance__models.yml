@@ -1,0 +1,62 @@
+ersion: 2
+
+models:
+  - name: stg_ads_performance
+    description: "Datos de performance publicitaria limpios y tipados, a nivel de fila por campaña/fecha/plataforma."
+    columns:
+      - name: campaign_date
+        description: "Fecha en la que se registró la actividad de la campaña."
+        tests:
+          - not_null
+
+      - name: platform
+        description: "Plataforma publicitaria (Google Ads, Meta Ads, TikTok Ads)."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Google Ads', 'Meta Ads', 'TikTok Ads']
+
+      - name: campaign_type
+        description: "Tipo de campaña (Search, Display, Video, Shopping)."
+        tests:
+          - not_null
+
+      - name: industry
+        description: "Industria del anunciante."
+
+      - name: country
+        description: "País donde se ejecutó la campaña."
+
+      - name: impressions
+        description: "Número total de impresiones."
+        tests:
+          - not_null
+
+      - name: clicks
+        description: "Número total de clics."
+        tests:
+          - not_null
+
+      - name: ctr
+        description: "Click-through rate (clicks / impressions)."
+
+      - name: cpc
+        description: "Costo por clic."
+
+      - name: ad_spend
+        description: "Inversión publicitaria total."
+        tests:
+          - not_null
+
+      - name: conversions
+        description: "Número total de conversiones."
+
+      - name: cpa
+        description: "Costo por adquisición (ad_spend / conversions)."
+
+      - name: revenue
+        description: "Ingresos generados por la campaña."
+
+      - name: roas
+        description: "Return on ad spend (revenue / ad_spend)."

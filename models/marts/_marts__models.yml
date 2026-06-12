@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: campaign_performance
+    description: "Métricas agregadas de performance publicitaria por mes, plataforma y tipo de campaña. Listo para consumo en dashboards."
+    columns:
+      - name: month
+        description: "Mes de la actividad de campaña (truncado a nivel mensual)."
+        tests:
+          - not_null
+
+      - name: platform
+        description: "Plataforma publicitaria."
+        tests:
+          - not_null
+
+      - name: campaign_type
+        description: "Tipo de campaña."
+        tests:
+          - not_null
+
+      - name: total_impressions
+        description: "Suma de impresiones del periodo."
+
+      - name: total_clicks
+        description: "Suma de clics del periodo."
+
+      - name: total_conversions
+        description: "Suma de conversiones del periodo."
+
+      - name: total_spend
+        description: "Inversión total del periodo."
+
+      - name: total_revenue
+        description: "Ingresos totales generados en el periodo."
+
+      - name: ctr
+        description: "Click-through rate recalculado a nivel agregado (total_clicks / total_impressions)."
+
+      - name: cpc
+        description: "Costo por clic recalculado a nivel agregado."
+
+      - name: cpa
+        description: "Costo por adquisición recalculado a nivel agregado."
+
+      - name: roas
+        description: "Return on ad spend recalculado a nivel agregado."
